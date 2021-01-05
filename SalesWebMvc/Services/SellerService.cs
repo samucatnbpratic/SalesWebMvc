@@ -21,7 +21,8 @@ namespace SalesWebMvc.Services
 
         public List<Seller> FindAll()
         {
-            return _context.Seller.Include(s => s.Department).ToList();
+            //estamos fazemos um JOIN usando o 'Include', assim ele busca o departamento também.
+            return _context.Seller.Include(s => s.Department).OrderBy(s => s.Id).ToList();
         }
 
         public void Insert(Seller obj)
